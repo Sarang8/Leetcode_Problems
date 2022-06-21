@@ -29,10 +29,38 @@ public:
 
     int nCr(int n, int r){
         // code here
-        if(n<r) return 0;
-       vector<vector<int>>dp(n+1, vector<int>(r+1, -1));
-       return solve(n, r, dp);
-       
+       if(n<r) return 0;
+    //   vector<vector<int>>dp(n+1, vector<int>(r+1, -1));
+    //   return solve(n, r, dp);
+    
+        vector<vector<int>>dp(n+1, vector<int>(r+1,0));
+        
+        for(int i=0; i<n+1; i++){
+            for(int j=0; j<r+1; j++){
+                
+                if(i==0 or j==0){
+                    dp[i][j]=1;
+                }
+            }
+        }
+        
+        for(int i=1; i<n+1; i++){
+            for(int j=1; j<r+1; j++){
+                
+                if(i==j){
+                    dp[i][j]=1;
+                }
+                else{
+                    int x = dp[i-1][j-1];
+                    int y = dp[i-1][j];
+                    
+                    dp[i][j] = (x+y)%mod;
+                }
+                
+            }
+        }
+        
+       return dp[n][r]%mod;
         
     }
 };
