@@ -8,29 +8,43 @@ using namespace std;
 class Solution{
     public:
     int mod = 1e9+7;
-    int dp[5005];
+    // int dp[5005];
     
-    long long solve(int n, int k){
+    // long long solve(int n, int k){
         
-        if(n==1)  return k;
+    //     if(n==1)  return k;
         
-        if(n==2)  return (k+k*(k-1))%mod;
+    //     if(n==2)  return (k+k*(k-1))%mod;
         
-        if(dp[n] != -1) return dp[n];
+    //     if(dp[n] != -1) return dp[n];
         
-        int same = ((k-1)*solve(n-2, k))%mod;
-        int diff = ((k-1)*solve(n-1, k))%mod;
+    //     int same = ((k-1)*solve(n-2, k))%mod;
+    //     int diff = ((k-1)*solve(n-1, k))%mod;
         
-        return dp[n]=(same+diff)%mod;
-    }
+    //     return dp[n]=(same+diff)%mod;
+    // }
     
     
     
     
     long long countWays(int n, int k){
         // code here
-        memset(dp,-1,sizeof(dp));
-        return solve(n,k);
+        // memset(dp,-1,sizeof(dp));
+        // return solve(n,k);
+        
+        vector<long long>dp(n+1);
+        
+        dp[1] = k;
+        dp[2] = k+k*(k-1);
+        
+        for(int i=3; i<n+1; i++){
+            
+            int same = ((k-1)*dp[i-2])%mod;
+            int diff = ((k-1)*dp[i-1])%mod;
+            
+            dp[i]=(same+diff)%mod;
+        }
+        return dp[n];
     }
 };
 
