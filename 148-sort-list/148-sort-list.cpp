@@ -46,8 +46,6 @@ public:
     }
     
     
-    
-    
     ListNode* sortList(ListNode* head) {
         
         if(head==NULL or head->next==NULL){
