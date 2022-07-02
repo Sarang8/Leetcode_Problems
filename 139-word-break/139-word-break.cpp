@@ -11,13 +11,13 @@ public:
         {
             for(int j=i-1;j>=0;j--)
             {
-                if(dp[j])
+                if(dp[j]==true)
                 {
                     string word = s.substr(j,i-j);
                     if(dictionry.find(word)!= dictionry.end())
                     {
                         dp[i]=true;
-                        break; //next i
+                        break; 
                     }
                 }
             }
