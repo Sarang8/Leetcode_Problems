@@ -19,6 +19,7 @@ public:
         for(int i=0; i<horizontalCuts.size()-1; i++){
             height[i]=(horizontalCuts[i+1]%mod-horizontalCuts[i]%mod)%mod;
             maxH = max(maxH , height[i]);
+            //cout<<maxH;
             
         }
         
@@ -26,6 +27,7 @@ public:
         for(int i=0; i<verticalCuts.size()-1; i++){
             width[i]=(verticalCuts[i+1]%mod-verticalCuts[i]%mod)%mod;
             maxW = max(maxW , width[i]);
+            //cout<<maxW;
         }
         
         ans=(maxH*maxW)%mod;
