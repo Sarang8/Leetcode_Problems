@@ -66,10 +66,9 @@ public:
 //         reverse(topo.begin(), topo.end());
 //         return topo;
 //     }
+          
         
-        
-        
-        vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites){
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites){
             
         vector<int> adj[numCourses];
         
@@ -114,7 +113,6 @@ public:
             }
         }
         reverse(topo.begin(), topo.end());
-        return topo;
-            
+        return topo;     
         }
 };
