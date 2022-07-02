@@ -7,7 +7,7 @@ public:
         
         for(auto it:adj[i]){
             
-            if(visited[it]==0){
+            if(!visited[it]){
                 if(cycleDFS(it, visited, DFSvisited, adj)) return true;
             }
             else if (DFSvisited[it]==1){
@@ -21,7 +21,7 @@ public:
     
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         
-        vector<int>adj[100001];
+        vector<int>adj[numCourses];
         for(int i=0; i<prerequisites.size(); i++) // convert edge list to adjacency list
         {
             adj[prerequisites[i][0]].push_back(prerequisites[i][1]);
