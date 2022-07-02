@@ -1,8 +1,7 @@
 class Solution {
 public:
     
-    bool cycleDFS(int i, vector<int>&visited, vector<int>&DFSvisited, vector<int> adj[]){
-        
+    bool cycleDFS(int i, vector<int>&visited, vector<int>&DFSvisited, vector<int> adj[]){ 
         visited[i]=1;
         DFSvisited[i]=1;
         
