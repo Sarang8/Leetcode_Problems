@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[505][505];
+    int dp[205][205];
     
     bool solve(string s1, string s2, string s3, int p1, int p2, int p3){
         
