@@ -15,6 +15,7 @@ public:
         }
         
         string ans="";
+        
         while(pq.size()>1){
             
             auto x = pq.top();
@@ -44,12 +45,6 @@ public:
                 ans+=pq.top().second;
             }  
         }
-        
-        
-        return ans;
-        
-        
-        
-        
+        return ans;   
     }
 };
