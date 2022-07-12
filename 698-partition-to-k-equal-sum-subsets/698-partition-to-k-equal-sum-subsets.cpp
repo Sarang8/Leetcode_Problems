@@ -1,46 +1,36 @@
 class Solution {
 public:
-     bool canPartitionKSubsets(vector<int>& nums, int K) {
-        int N = nums.size();
-        if (K == 1) return true;
-        if (N < K) return false;
+    
+     bool canPartitionKSubsets(vector<int>& nums, int k) {
         int sum = 0;
-        for (int i = 0; i < N; i++) sum += nums[i];
-        if (sum % K != 0) return false;
-
-        int subset = sum / K;
-        int subsetSum[K];
-        bool taken[N];
-
-        for (int i = 0; i < K; i++) subsetSum[i] = 0;
-        for (int i = 0; i < N; i++) taken[i] = false;
-
-        subsetSum[0] = nums[N - 1];
-        taken[N - 1] = true;
-
-        return canPartitionKSubsets(nums, subsetSum, taken, subset, K, N, 0, N - 1);
+        sum = accumulate(nums.begin(), nums.end(), sum);
+        if (nums.size() < k || sum % k) return false;
+        
+        vector<bool> visited(nums.size(), false);
+        int univisited = nums.size();
+        return backtrack(nums, visited, sum / k, 0, 0, k, univisited);
     }
-
-    bool canPartitionKSubsets(vector<int>& nums, int subsetSum[], bool taken[], int subset, int K, int N, int curIdx, int limitIdx) {
-        if (subsetSum[curIdx] == subset) {
-            if (curIdx == K - 2) return true;
-            return canPartitionKSubsets(nums, subsetSum, taken, subset, K, N, curIdx + 1, N - 1);
+    
+    bool backtrack(vector<int>& nums, vector<bool> &visited, int target, int curr_sum, int i, int k, int &unvisited) {
+        if (k == 1) 
+            return true;
+        
+        if(unvisited == 0 || i >= nums.size())
+            return false;
+        
+        if (curr_sum == target) 
+            return backtrack(nums, visited, target, 0, 0, k-1, unvisited);
+        
+        for (int j = i; j < nums.size(); j++) {
+            if (visited[j] || curr_sum + nums[j] > target) continue;
+            
+            visited[j] = true;
+            unvisited--;
+            if (backtrack(nums, visited, target, curr_sum + nums[j], j+1, k, unvisited)) return true;
+            visited[j] = false;
+            unvisited++;
         }
-
-        for (int i = limitIdx; i >= 0; i--) {
-            if (taken[i]) continue;
-            int tmp = subsetSum[curIdx] + nums[i];
-
-            if (tmp <= subset) {
-                taken[i] = true;
-                subsetSum[curIdx] += nums[i];
-                bool nxt = canPartitionKSubsets(nums, subsetSum, taken, subset, K, N, curIdx, i - 1);
-                taken[i] = false;
-                subsetSum[curIdx] -= nums[i];
-                if (nxt) return true;
-            }
-        }
+        
         return false;
     }
-        
 };
