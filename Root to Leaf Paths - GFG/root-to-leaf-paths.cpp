@@ -152,12 +152,10 @@ vector<vector<int>> Paths(Node* root)
 {
     // Code here
     vector<vector<int>>ans;
-     vector<int> temp;
+    vector<int> temp;
     
     if(root==NULL) return ans;
     
     solve(root, ans,temp);
-    
-    
-    
+    return ans;
 }
