@@ -12,7 +12,8 @@
 class Solution {
 public:
     
-    void ReverseInorder(TreeNode* root, vector<int>&ans, int level){
+    void solve(TreeNode* root, int level,vector<int>&ans){
+        
         if(root==NULL){
             return;
         }
@@ -21,17 +22,18 @@ public:
             ans.push_back(root->val);
         }
         
-        ReverseInorder(root->right, ans, level+1);
-        ReverseInorder(root->left, ans, level+1);
-        
+        solve(root->right, level+1, ans);
+        solve(root->left, level+1, ans);
     }
     
-    
     vector<int> rightSideView(TreeNode* root) {
+        
         vector<int>ans;
+        if(root==NULL) return ans;
         int level=0;
         
-        ReverseInorder(root, ans, level);
+        solve(root, level, ans);
+        
         return ans;
     }
 };
