@@ -20,7 +20,7 @@ public:
         
         long long t1=solve(m,n, maxMove-1, i+1, j)%mod;
         long long t2=solve(m,n, maxMove-1, i-1, j)%mod;
-        long long  t3=solve(m,n, maxMove-1, i, j+1)%mod;
+        long long t3=solve(m,n, maxMove-1, i, j+1)%mod;
         long long t4=solve(m,n, maxMove-1, i, j-1)%mod;
         
         dp[maxMove][i][j] = (t1%mod+t2%mod+t3%mod+t4%mod)%mod;
@@ -31,8 +31,7 @@ public:
     int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
         
         memset(dp, -1, sizeof(dp));
-        dp[maxMove][m][n]=solve(m,n, maxMove, startRow,startColumn);
-        return dp[maxMove][m][n];
+        return solve(m,n, maxMove, startRow,startColumn);
         
     }
 };
