@@ -7,9 +7,7 @@ public:
         int sum=0;
         int ans=0;
         m[sum]=1;
-            
-            
-            
+                 
         for(int i=0; i<n; i++){  
             sum+=nums[i];
             int target = sum-k;
