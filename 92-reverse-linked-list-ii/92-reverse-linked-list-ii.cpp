@@ -19,27 +19,33 @@ public:
             return head;
         }
         
-        ListNode* dummy=new ListNode(0);
-        ListNode* prev=dummy;
-        ListNode* curr;
-        ListNode* nex;
-        dummy->next=head;
+        ListNode* temp=new ListNode();
+        temp->next=head;
+        ListNode* prev=temp;
+        ListNode* curr=temp;
+        ListNode* nex=temp;
         
-        for(int i=0; i<left-1; i++){
-            prev = prev->next; 
+        int cnt=1;
+        
+        while(cnt<left){
+            prev=prev->next;
+            cnt++;
         }
-        curr = prev->next;
         
-        for(int i=1; i<=(right-left);i++){
+        //prev=temp;
+        curr=prev->next;
+        nex=curr->next;
             
-            ListNode* temp = prev->next;
-            prev->next = curr->next;
-            curr->next = curr->next->next;
-            prev->next->next=temp;
-        }
+            for(int i=1; i<=(right-left); i++){
+                    
+                curr->next=nex->next;
+                nex->next=prev->next;
+                prev->next = nex;
+                nex = curr->next;
+            } 
         
+        return temp->next;
         
-        return dummy->next;
         
     }
 };
