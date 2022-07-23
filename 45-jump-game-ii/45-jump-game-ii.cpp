@@ -1,24 +1,41 @@
 class Solution {
 public:
+    // int solve(int ind, vector<int>&nums){
+    //     if(ind>=nums.size()-1){
+    //         return 0;
+    //     } 
+    //     int temp=INT_MAX;
+    //     for(int i=1; i<=ind+nums[ind]; i++){
+    //         temp = min(temp, 1 + solve(ind+i,nums));  
+    //     }   
+    //    return temp;
+    // }
+    
+    
     int jump(vector<int>& nums) {
         
-        int n = nums.size(); 
-        int res = 0;
-        int l=0;
-        int r=0;
+        // int n=nums.size();    /////Dynamic programming/////////////////
+        // return solve(0,nums);
         
-        while(r<n-1){
+        int n=nums.size();
+        int ans=0;
+        int left=0;
+        int right=0;
+        
+        while(right<n-1){
             
-            int farthest = 0;
-            for(int i=l; i<=r; i++){
-                
-                farthest = max(farthest, i+nums[i]);
+            int maxReach=0;
+            
+            for(int i=left; i<=right; i++){
+                maxReach=max(maxReach,i+nums[i]);
             }
             
-            l=r+1;
-            r=farthest;
-            res++;
+            left=right+1;
+            right=maxReach;
+            ans++;
         }
-        return res;
+        
+        return ans;
+        
     }
 };
