@@ -9,7 +9,7 @@ public:
         int j=m-1;
         
         while(i<n && j>=0){
-         
+            
             if(matrix[i][j]==target){
                 return true;
             }
@@ -21,6 +21,7 @@ public:
                 i++;
             }
         }
+        
         return false;
     }
 };
