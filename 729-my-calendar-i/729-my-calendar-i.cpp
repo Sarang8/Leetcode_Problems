@@ -8,7 +8,7 @@ public:
     
     bool book(int start, int end) {
         
-        for(auto [s2,e2]:m){
+        for(auto &[s2,e2]:m){
             
             if( !( start>=e2 or end<=s2) ){
                 return false;
