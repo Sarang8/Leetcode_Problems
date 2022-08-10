@@ -1,17 +1,18 @@
 class Solution {
 public:
     
-    void dfs(vector<vector<char>>& grid,int i, int j){
+    void dfs(int i, int j, vector<vector<char>>& grid){
         
         if(i<0 or j<0 or i>=grid.size() or j>=grid[0].size() or grid[i][j]=='0'){
             return;
         }
+        
         grid[i][j]='0';
         
-         dfs(grid, i+1,j);
-         dfs(grid, i-1,j);
-         dfs(grid, i,j+1);
-         dfs(grid, i,j-1);        
+        dfs(i+1, j, grid);
+        dfs(i-1, j, grid);
+        dfs(i, j+1, grid);
+        dfs(i, j-1, grid);
     }
     
     
@@ -21,7 +22,6 @@ public:
         
         int r=grid.size();
         int c=grid[0].size();
-        
         int ans=0;
         
         for(int i=0; i<r; i++){
@@ -29,12 +29,11 @@ public:
                 
                 if(grid[i][j]=='1'){
                     ans++;
-                    dfs(grid,i, j);
+                    dfs(i, j, grid);
                 }
                 
             }
         }
-        
-        return ans;
+        return ans; 
     }
 };
