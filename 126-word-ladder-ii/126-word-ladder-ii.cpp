@@ -1,5 +1,65 @@
 class Solution {
 public:
+//     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        
+//         vector<vector<string>>ans;
+        
+//         unordered_map<string, int>m;
+        
+//         for(auto it:wordList){
+//             m.insert({it, INT_MAX});
+//         }
+//         m[beginWord]=0;  
+        
+//         queue<pair<string, vector<string>>>q;
+        
+//         q.push({beginWord, {beginWord}});
+        
+        
+//         while(!q.empty()){
+            
+//             auto n=q.front();
+//             q.pop();
+//             string word = n.first;
+//             auto v=n.second;
+            
+//             if(word==endWord){
+//                 ans.push_back(v);
+//                 continue;
+//             }
+            
+            
+//             for(int i=0; i<word.size(); i++){
+                
+//                 string t = word;
+                
+//                 for(char c='a'; c<='z'; c++){
+//                     t[i]=c;
+                    
+//                     if( t==word){
+//                         continue;
+//                     }
+                    
+//                     if(m.find(t)==m.end()){
+//                         continue;
+//                     }
+                    
+//                     if(m[t] < (int)v.size()){
+//                         continue;
+//                     }
+                    
+//                     m[t] = (int)v.size();
+//                     v.push_back(t);
+//                     q.push({t, v});
+//                     v.pop_back();   
+//                 }   
+//             }   
+//         }
+        
+//         return ans;
+//     }
+// };
+    
     unordered_map<string, int> stepMap;
     unordered_map<string, set<string>> trailTracker;
     
