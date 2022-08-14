@@ -8,9 +8,9 @@ public:
        
         int maxPt=0;
         double slope=0.0;
-        
+        unordered_map<double, int>m;
         for(int i=0; i<n; i++){
-             unordered_map<double, int>m;
+             
             for(int j=i+1; j<n; j++){
                 
                 int x1=points[i][0];
@@ -29,6 +29,7 @@ public:
             for(auto it:m){
             maxPt = max(maxPt, it.second);
              }
+            m.clear();
         }
         
         
