@@ -3,7 +3,7 @@ public:
     int minSetSize(vector<int>& arr) {
         int n=arr.size();
         int h=n/2;
-        cout<<n<<endl;
+        //cout<<n<<endl;
         
         unordered_map<int,int>m;
         
@@ -16,11 +16,10 @@ public:
         
         for(auto it:m){
             pq.push({it.second, it.first});
-            cout<<it.second<<" "<<it.first<<endl;
         }
         
         
-        cout<<endl;
+        //cout<<endl;
         int ops=0;
         
         while(true){
@@ -29,7 +28,7 @@ public:
             pq.pop();
             
             n = n-t.first;
-            cout<<n<<endl;
+            //cout<<n<<endl;
             ops++;
             
             if(n<=h){
