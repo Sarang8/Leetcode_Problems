@@ -21,11 +21,7 @@ public:
             maxReach+=pq.top();
             pq.pop();
             count++;
-            
-        }
-        
-        
-        
+        } 
         
         return count;
     }
