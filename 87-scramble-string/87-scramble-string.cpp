@@ -27,7 +27,7 @@ public:
                             solve(a.substr(i, n-i), b.substr(0, n-i), m);
             
             if(case1 == true){
-                return true;
+                return m[key]=true;
             }
             
             
