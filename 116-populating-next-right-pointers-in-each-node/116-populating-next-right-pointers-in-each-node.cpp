@@ -19,6 +19,7 @@ public:
 class Solution {
 public:
     Node* connect(Node* root) {
+        
         if(root==NULL){
             return NULL;
         }
@@ -31,13 +32,13 @@ public:
         
         if(curr->right){
             if(curr->next){
-                curr->right->next = curr->next->left;
+                 curr->right->next = curr->next->left;
             }
         }
         
-        connect(root->left);
-        connect(root->right);
-        
-        return root;
+        connect(curr->left);
+        connect(curr->right);
+     
+        return curr;
     }
 };
