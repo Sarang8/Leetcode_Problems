@@ -3,82 +3,87 @@
 class Solution {
 public:
     
-    void MERGE(ll low, ll mid, ll high, vector<int>&nums, ll &rvrsPairCnt){
+    void Merge(ll low, ll mid, ll high, vector<int>&nums, ll &ans){
         
         ll i=low;
-        ll j=mid+1;
         ll k=low;
-        ll counter=0;
+        ll j=mid+1;
         
+        ll counter=0;
         while(i<=mid){
-            while(j<=high && nums[i] > (ll)2*nums[j]){
+            while(j<=high &&  nums[i] > (ll)2*nums[j]){
                 counter++;
                 j++;
             }
             i++;
-            rvrsPairCnt += counter;
+            ans+=counter;
         }
         
-        ll temp[high+1];
+        
         i=low;
-        j=mid+1;
         k=low;
+        j=mid+1;
+        ll b[high+1];
         
         while(i<=mid && j<=high){
             
-            if(nums[i]<=nums[j]){
-                temp[k]=nums[i];
-                i++;
+            if(nums[i]>nums[j]){
+                
+                b[k]=nums[j];
                 k++;
+                j++;
             }
             else{
-                temp[k]=nums[j];
-                j++;
+                b[k]=nums[i];
                 k++;
-            }
+                i++;
+            } 
         }
         
         while(i<=mid){
-            temp[k]=nums[i];
+            b[k]=nums[i];
             i++;
             k++;
         }
         
         while(j<=high){
-            temp[k]=nums[j];
+            b[k]=nums[j];
             j++;
             k++;
         }
         
         
         for(int i=low; i<=high; i++){
-            nums[i]=temp[i];
-        }    
+            nums[i]=b[i];
+        } 
     }
     
     
-    void mergeSort(ll low, ll high, vector<int>&nums, ll &rvrsPairCnt){
+    
+    
+    
+    void mergeSort(ll i, ll j, vector<int>&nums, ll &ans){
         
-        if(low<high){
+        if(i<j){
             
-            ll mid = low + (high-low)/2;
+            ll mid = i + (j-i)/2;
             
-            mergeSort(low, mid, nums, rvrsPairCnt);
-            mergeSort(mid+1, high, nums, rvrsPairCnt);
+            mergeSort(i, mid, nums, ans);
+            mergeSort(mid+1, j, nums, ans);
             
-            MERGE(low, mid, high, nums, rvrsPairCnt); 
+            Merge(i, mid, j, nums, ans);
         }
         
+        
     }
     
-    
-    
-    
-    
     int reversePairs(vector<int>& nums) {
+        
         int n=nums.size();
-        ll rvrsPairCnt=0;
-        mergeSort(0, n-1, nums, rvrsPairCnt);
-        return rvrsPairCnt;
+        ll ans=0;
+        mergeSort(0, n-1, nums, ans);
+        
+        return ans;
+      
     }
 };
