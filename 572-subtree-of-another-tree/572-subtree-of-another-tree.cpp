@@ -28,7 +28,11 @@ public:
             return root==subRoot;
         }
         
-        return solve(root, subRoot) or isSubtree(root->left, subRoot) or isSubtree(root->right, subRoot);
+        if(solve(root, subRoot)){
+            return true;
+        }
+        
+        return  isSubtree(root->left, subRoot) or isSubtree(root->right, subRoot);
         
     }
 };
