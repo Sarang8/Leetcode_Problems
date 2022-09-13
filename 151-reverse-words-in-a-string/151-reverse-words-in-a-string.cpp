@@ -2,9 +2,10 @@ class Solution {
 public:
     string reverseWords(string s) {
         
-        int n = s.length();
+        int n=s.size();
+        string ans="";
+        
         int i=0;
-        string result;
         
         while(i<n){
             
@@ -12,22 +13,30 @@ public:
                 i++;
             }
             if(i>=n) break;
-            int j = i+1;
+            
+            int j=i;
+            
+            string temp="";
             while(j<n && s[j]!=' '){
+                temp += s[j];
                 j++;
             }
             
-            string sub = s.substr(i, j-i);
-            
-            if(result.length()==0){
-                result=sub;
+            if(ans.size()==0){
+                ans = temp;
             }
             else{
-                result = sub + ' ' + result;
+                ans = temp + ' ' + ans;
             }
             
-            i=j+1;            
+            i=j+1;
         }
-        return result;
+        
+        
+        
+        return ans;
+        
+        
+        
     }
 };
