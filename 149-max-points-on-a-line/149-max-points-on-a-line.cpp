@@ -31,10 +31,7 @@ public:
              }
             m.clear();
         }
-        
-        
-        
-        
+            
        return maxPt+1; 
     }
 };
