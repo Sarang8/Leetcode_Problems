@@ -39,5 +39,19 @@ public:
         temp1->next=temp3;
         return head;
         
+//         if(!head || !head->next || !head->next->next) return head;
+
+//         ListNode *odd = head, *even = head->next, *even_head = head->next;
+        
+//         while(odd->next && even->next) {
+//             odd->next = odd->next->next;
+//             even->next = even->next->next;
+//             odd = odd->next;
+//             even = even->next;
+//         }
+        
+//         odd->next = even_head;
+//         return head;
+        
     }
 };
