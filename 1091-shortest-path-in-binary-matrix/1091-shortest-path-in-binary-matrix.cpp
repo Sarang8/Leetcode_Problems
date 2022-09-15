@@ -15,7 +15,7 @@ public:
         q.push({0, 0});
         grid[0][0] = 1;
         
-        while (!q.empty() && !grid[n][m]) {
+        while (!q.empty()) {
             curr = q.front();
             q.pop();
             
