@@ -1,47 +1,39 @@
 class Solution {
 public:
-    
-    int solve(vector<int> s1, vector<int> s2, int n, int m){
+    int solve(int i, int j, vector<int>&nums1, vector<int>&nums2, vector<vector<int>>&dp, int &ans){
         
-        int t[n+1][m+1];
-        
-        for(int i=0; i<n+1; i++){
-            for(int j=0; j<m+1; j++){
-                if(i==0 or j==0){
-                    t[i][j]=0;
-                }
-            }
+        if(i<0 or j<0){
+            return 0;
         }
         
-        //int maxi = INT_MIN;
-        for(int i=1; i<n+1; i++){
-            for(int j=1; j<m+1; j++){
-                
-                if(s1[i-1]==s2[j-1]){
-                    t[i][j] = 1 + t[i-1][j-1];
-                    //maxi = max(maxi, t[i][j]);
-                }
-                else{
-                    t[i][j]=0;
-                }
-            }
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        if(nums1[i]==nums2[j]){
+           dp[i][j]=1+solve(i-1, j-1, nums1, nums2, dp, ans);
+        }
+        else{
+            dp[i][j]=0;
         }
         
-        int maxi = INT_MIN;
-        for(int i=0; i<n+1; i++){
-            for(int j=0; j<m+1; j++){
-                maxi = max(maxi, t[i][j]);
-            }
-        }
-        return maxi;
+         solve(i-1, j, nums1, nums2, dp, ans);
+         solve(i, j-1, nums1, nums2, dp, ans);
+        
+        
+        ans = max(ans, dp[i][j]);
+        return dp[i][j];
+        
     }
     
-    
-    
     int findLength(vector<int>& nums1, vector<int>& nums2) {
-        int x = nums1.size();
-        int y = nums2.size();
-        return solve(nums1, nums2, x, y);
+        
+        
+        int n =nums1.size();
+        int m=nums2.size();
+        vector<vector<int>>dp(n+1, vector<int>(m+1, -1));
+        int ans=INT_MIN;
+        solve(n-1, m-1, nums1, nums2, dp, ans);
+        return ans;
+        
         
     }
 };
