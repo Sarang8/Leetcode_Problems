@@ -20,7 +20,7 @@ public:
         vector<TreeNode*>ans;
         
         for(int i=2; i<n; i++){
-            vector<TreeNode*>leftPossibleTree =  allPossibleFBT(i-1);
+            vector<TreeNode*>leftPossibleTree =  allPossibleFBT(i-1);  //we are passing no. of nodes
             vector<TreeNode*>rightPossibleTree =  allPossibleFBT(n-i);
             
             for(auto lefti : leftPossibleTree){
@@ -31,17 +31,8 @@ public:
                     root->right = righti;
                     ans.push_back(root);
                 }
-            }
-            
-            
-            
-            
+            }    
         }
-        
-        
-        
-        
-        return ans;
-        
+        return ans;    
     }
 };
