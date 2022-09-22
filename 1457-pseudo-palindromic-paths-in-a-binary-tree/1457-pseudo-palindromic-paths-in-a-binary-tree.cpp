@@ -11,13 +11,13 @@
  */
 class Solution {
 public:
-    unordered_map<int ,int>mp;
     int ans=0;
+    unordered_map<int,int>mp;
     
     void solve(TreeNode* root){
         
         if(root==NULL){
-            return;
+            return ;
         }
         
         mp[root->val]++;
@@ -30,24 +30,22 @@ public:
                     odd++;
                 }
             }
-            
             if(odd<=1){
                 ans++;
             }
         }
         
+        
         solve(root->left);
-        solve(root->right);  
+        solve(root->right);
         mp[root->val]--;
+        
     }
-    
     
     
     int pseudoPalindromicPaths (TreeNode* root) {
         
-        
         solve(root);
         return ans;
-        
     }
 };
