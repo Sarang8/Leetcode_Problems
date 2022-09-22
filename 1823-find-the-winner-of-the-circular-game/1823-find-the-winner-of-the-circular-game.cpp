@@ -1,34 +1,29 @@
 class Solution {
 public:
-    void solve(vector<int>v, int p, int idx, int &ans){
+    void solve(int idx, vector<int>&nums, int t, int &ans){
         
-        if(v.size()==1){
-            ans = (v[0]);
+        if(nums.size()==1){
+            ans = nums[0];
             return;
         }
         
-        idx = (idx + p) % v.size();
-        v.erase(v.begin()+idx);
-        solve(v, p, idx, ans);
-        
+        idx = (idx+t)%nums.size();
+        nums.erase(nums.begin()+idx);
+        solve(idx, nums, t, ans);
     }
-    
-    
     
     int findTheWinner(int n, int k) {
         
-        vector<int>v;
-        
-        for(int i=1; i<=n; i++){
-            v.push_back(i);
+        vector<int>nums;
+        for(int i=1;i<=n;i++){
+            nums.push_back(i);
         }
         
-        int p = k-1;   
-        int ans = -1;
-        int idx = 0;
+        int ans=-1;
+        int t=k-1;
+        int idx=0;
+        solve(idx, nums, t, ans);
         
-        solve(v, p, idx,ans);
         return ans;
-        
     }
 };
