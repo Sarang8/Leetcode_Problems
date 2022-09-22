@@ -31,8 +31,9 @@ public:
             
              if(currSum==target){
                 len = max(len, j-i+1);
-            }
-                j++;
+             }
+                
+            j++;
         }
         
         if(len==0) return -1;
