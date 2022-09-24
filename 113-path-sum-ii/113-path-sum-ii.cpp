@@ -33,7 +33,7 @@ public:
         solve(root->left, currSum,target, ds, ans);
         solve(root->right, currSum, target, ds, ans);
         
-        currSum-=root->val;
+        //currSum-=root->val;
         //cout<<currSum<<endl;
         ds.pop_back();        
     }
