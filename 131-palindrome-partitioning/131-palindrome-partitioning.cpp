@@ -1,7 +1,8 @@
 class Solution {
 public:
-    bool isPal(string &s, int low, int high){
-        
+    bool isPal(string &s){
+        int low=0;
+        int high=s.size()-1;
         while(low<=high){
             if(s[low]!=s[high]){
                 return false;
@@ -21,15 +22,15 @@ public:
             return;
         }
         
-        
+        string temp="";
         for(int i=ind;i<s.size();i++){
-            if(isPal(s, ind, i)){
-                ds.push_back(s.substr(ind, i-ind+1));
+            temp+=s[i];
+            if(isPal(temp)){
+                ds.push_back(temp);
                 solve(i+1, s, ds, ans);
                 ds.pop_back();
             }
         }
-        
         
     }
     
