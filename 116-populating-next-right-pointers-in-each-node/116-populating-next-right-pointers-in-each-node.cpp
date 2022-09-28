@@ -32,13 +32,14 @@ public:
         
         if(curr->right){
             if(curr->next){
-                 curr->right->next = curr->next->left;
+                curr->right->next = curr->next->left;
             }
         }
         
-        connect(curr->left);
-        connect(curr->right);
-     
-        return curr;
+        connect(root->left);
+        connect(root->right);
+        
+        return root;
+        
     }
 };
