@@ -11,12 +11,16 @@ public:
             else if(exp[i]=='-') sign= -1, i=i+1;
 
             while( i<n and exp[i]>='0' and exp[i]<='9' ){
-                    x= 10*x+exp[i++]-'0';
+                    x= 10*x+exp[i]-'0';
+                    i++;
                 }
 
              i++;
-             while(i<n and exp[i]>='0' and exp[i]<='9' )
-                y=y*10 + exp[i++]-'0';
+             while(i<n and exp[i]>='0' and exp[i]<='9' ){
+                 y=y*10 + exp[i]-'0';
+                 i++;
+             }
+                
 
             x*=sign;
 
