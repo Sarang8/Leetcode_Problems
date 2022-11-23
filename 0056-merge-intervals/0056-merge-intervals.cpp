@@ -11,7 +11,7 @@ public:
         vector<int>temp;
         temp=inter[0];
         
-        for(int i=0;i<n;i++){
+        for(int i=1;i<n;i++){
             
             if(temp[1]>=inter[i][0]){
                 temp[1]=max(temp[1], inter[i][1]);
